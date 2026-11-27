@@ -12,7 +12,19 @@
     - เมื่อ Algorithm นี้ทำงาน จะต้องเห็นผลลัพธ์ดังนี้
 */
 
-// Start coding here
+const findIfProductsAvailable = (products, targetProduct, targetQuantity) => {
+    for (let i = 0; i < products.length;i++){ //check each product object in array
+        if (products[i].name === targetProduct){
+            if(products[i].quantity >= targetQuantity){
+                return `${products[i].quantity} ${products[i].name}(s) are available at ${products[i].zone}`
+            } else if (products[i].quantity < targetQuantity){
+                return `Sorry, we've got only ${products[i].quantity} ${products[i].name} available at ${products[i].zone}`
+            }
+        }
+    }
+    return `We don't have ${targetProduct}`
+}
+    
 
 const products = [
   { name: "Chocolate Milk", quantity: 10, zone: "A1" },
@@ -21,6 +33,7 @@ const products = [
   { name: "Headphones", quantity: 8, zone: "F3" },
   { name: "Backpack", quantity: 12, zone: "G4" },
 ];
+
 
 console.log(findIfProductsAvailable(products, "Chocolate Milk", 3));
 // 3 Chocolate Milk(s) are available at Zone A1
